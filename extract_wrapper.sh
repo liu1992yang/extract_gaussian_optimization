@@ -6,8 +6,8 @@ BASIS=$3
 module load anaconda3_4.3.1
 
 if [ -z "$CKPT" ]||[ -z "$METHOD" ]||[ -z "$BASIS" ]; then
-  echo "Usage: ./extract_wrapper.sh Y/N(checkpoint_queue) new_functional, new_basis" 
-  echo "Y/N expected to indicate whether this is a checkpoint queue run"
+  echo "Usage: ./extract_wrapper.sh Y/N(individual folder such as checkpoint_queue) new_functional new_basis" 
+  echo "Y/N expected to indicate whether this is a checkpoint queue run, which indicates geometry opt jobs are individual folders"
   exit 1
 fi
 
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     log_files = dlist.split()
   print(log_files)
   for log in log_files:
-    subprocess.call(["python", "extract_gauss_opt.py", log, method, basis])
+    subprocess.call(["python", "extract_gaussian_opt.py", log, method, basis])
 END
 
 echo "please see dir 'opted_gjf' for optimized structures and energys"
