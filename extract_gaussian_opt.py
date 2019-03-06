@@ -137,7 +137,7 @@ def read_blocks(finput):
         optimized = True
     if is_structure:
       all_block.append(current_block)
-    assert charge and multipl, 'no charge or multiplicity found'
+    assert (charge and multipl) != None, 'no charge or multiplicity found'
     energy, struc = select_structure(optimized, all_block)
     coords = extract_coords(struc)
     return optimized, charge, multipl, ''.join(old_route), energy, coords
